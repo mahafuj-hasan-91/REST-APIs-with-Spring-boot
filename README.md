@@ -11,6 +11,7 @@ This project demonstrates the creation of **Stateless REST APIs** using the **Sp
 * **Tools:** Lombok, Spring Web, Spring Boot DevTools
 
 ---
+<img src="https://github.com/mahafuj-hasan-91/REST-APIs-with-Spring-boot/blob/main/src/main/resources/templates/localhost_8080_.png?raw=true" alt="description" width="500" height="500">
 
 ## 🏃‍♂️ How to Run
 
