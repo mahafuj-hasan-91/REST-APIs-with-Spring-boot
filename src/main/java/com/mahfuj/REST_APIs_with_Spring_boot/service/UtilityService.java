@@ -310,5 +310,52 @@ public class UtilityService {
 
         return response;
     }
+
+    // ------------------------------------------------------------
+    // 11. IN-MEMORY USER MANAGEMENT (Simulating a Database)
+    // ------------------------------------------------------------
+
+    // A list to hold data while the application is running
+    private List<Map<String, Object>> userList = new ArrayList<>();
+
+    // POST: Create a new user
+    public String addUser(Map<String, Object> userData) {
+        userList.add(userData);
+        return "User added successfully! Total users: " + userList.size();
+    }
+
+    // GET: Retrieve all users
+    public List<Map<String, Object>> getAllUsers() {
+        return userList;
+    }
+
+    // GET: Retrieve a single user by Index
+    public Map<String, Object> getUser(int index) {
+        if (index >= 0 && index < userList.size()) {
+            return userList.get(index);
+        } else {
+            return null; // Return null if the index doesn't exist
+        }
+    }
+
+    // PUT: Update a user by Index
+    public String updateUser(int index, Map<String, Object> updatedData) {
+        if (index >= 0 && index < userList.size()) {
+            userList.set(index, updatedData);
+            return "User at index " + index + " updated successfully.";
+        } else {
+            return "User not found at index " + index;
+        }
+    }
+
+    // DELETE: Remove a user by Index
+    public String deleteUser(int index) {
+        if (index >= 0 && index < userList.size()) {
+            userList.remove(index);
+            return "User at index " + index + " deleted successfully.";
+        } else {
+            return "User not found at index " + index;
+        }
+    }
 }
 

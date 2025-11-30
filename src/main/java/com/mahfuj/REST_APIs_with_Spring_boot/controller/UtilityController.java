@@ -98,6 +98,52 @@ public class UtilityController {
         return service.getDateTimeDetailed();
     }
 
+    // ------------------------------------------------------------
+    // 11. IN-MEMORY USER CRUD (Create, Read, Update, Delete)
+    // ------------------------------------------------------------
+
+    // POST Request: To create data
+    // URL: http://localhost:8080/api/users
+    @PostMapping("/users")
+    public String createUser(@RequestBody Map<String, Object> body) {
+        return service.addUser(body);
+    }
+
+    // GET Request: To read all data
+    // URL: http://localhost:8080/api/users
+    @GetMapping("/users")
+    public Object getUsers() {
+        return service.getAllUsers();
+    }
+
+    // GET Request: Get a single user by ID (Index)
+    // URL: http://localhost:8080/api/users/{index}
+    @GetMapping("/users/{index}")
+    public Object getUser(@PathVariable int index) {
+        Map<String, Object> user = service.getUser(index);
+
+        if (user != null) {
+            return user;
+        } else {
+            // Return a simple error message if not found
+            return Map.of("error", "User not found with ID: " + index);
+        }
+    }
+
+    // PUT Request: To update data
+    // URL: http://localhost:8080/api/users/{index}
+    @PutMapping("/users/{index}")
+    public String updateUser(@PathVariable int index, @RequestBody Map<String, Object> body) {
+        return service.updateUser(index, body);
+    }
+
+    // DELETE Request: To delete data
+    // URL: http://localhost:8080/api/users/{index}
+    @DeleteMapping("/users/{index}")
+    public String deleteUser(@PathVariable int index) {
+        return service.deleteUser(index);
+    }
+
 }
 
 

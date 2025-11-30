@@ -1,3 +1,7 @@
 spring:
   application:
     name: REST-APIs-with-Spring-boot
+
+  jackson:
+    serialization:
+      indent_output: true
